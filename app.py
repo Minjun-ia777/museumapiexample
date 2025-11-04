@@ -97,8 +97,8 @@ st.sidebar.header("Search Filters")
 
 # 1. Load departments for the dropdown
 departments = get_departments()
-dept_names = [dept['displayName'] for dept in departments]
-dept_map = {name: dept['departmentId'] for dept in departments}
+dept_map = {dept['displayName']: 
+dept['departmentId'] for dept in departments}
 
 # 2. Add "All" option for departments
 dept_names.insert(0, "All Departments")
