@@ -43,7 +43,9 @@ def search_artworks(query, department_id, is_highlight, date_begin=None, date_en
     search_url = "https://collectionapi.metmuseum.org/public/collection/v1/search"
     params = {
         'q': query,
-        'isHighlight': is_highlight,
+        # --- FIX: Convert Python boolean to lowercase string "true" or None ---
+        # The API expects the lowercase string "true", not the Python boolean True.
+        'isHighlight': "true" if is_highlight else None, 
         'departmentId': department_id if department_id != "all" else None,
         'dateBegin': date_begin, # Add dateBegin to params
         'dateEnd': date_end     # Add dateEnd to params
